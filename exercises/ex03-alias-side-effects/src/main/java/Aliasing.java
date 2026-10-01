@@ -18,12 +18,12 @@ import java.util.Arrays;
 public class Aliasing {
 
     public static void main(String[] args) {
-        int[] data = {1, 2, 3};
+        int[] data = { 1, 2, 3 };
         addInPlace(data, 10);
         // addInPlace modifies the SAME array, so `data` should now be {11, 12, 13}:
         System.out.println("data after addInPlace: " + Arrays.toString(data));
 
-        int[] original = {1, 2, 3};
+        int[] original = { 1, 2, 3 };
         int[] copy = addCopy(original, 10);
         // addCopy must leave `original` as {1, 2, 3} and return a NEW {11, 12, 13}:
         System.out.println("original stays:        " + Arrays.toString(original));
@@ -39,7 +39,9 @@ public class Aliasing {
      * @param amount the value to add to each element
      */
     public static void addInPlace(int[] arr, int amount) {
-        // TODO: complete
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] += amount;
+        }
     }
 
     /**
@@ -51,7 +53,12 @@ public class Aliasing {
      * @return a new array of the same length, each element increased by amount
      */
     public static int[] addCopy(int[] arr, int amount) {
-        // TODO: complete
-        return new int[1];
+        int[] copy = new int[arr.length];
+
+        for (int i = 0; i < copy.length; i ++) {
+            copy[i] = arr[i] + amount;
+        }
+
+        return copy;
     }
 }
