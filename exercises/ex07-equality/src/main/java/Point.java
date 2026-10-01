@@ -16,62 +16,67 @@ import java.util.Objects;
  */
 public class Point {
 
-  private final int x;
-  private final int y;
+    private final int x;
+    private final int y;
 
-  /**
-   * Creates a point.
-   *
-   * @param x the x-coordinate
-   * @param y the y-coordinate
-   */
-  public Point(int x, int y) {
-    this.x = x;
-    this.y = y;
-  }
+    /**
+     * Creates a point.
+     *
+     * @param x the x-coordinate
+     * @param y the y-coordinate
+     */
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
-  public int getX() {
-    return x;
-  }
+    public int getX() {
+        return x;
+    }
 
-  public int getY() {
-    return y;
-  }
+    public int getY() {
+        return y;
+    }
 
-  /**
-   * Returns this point formatted as {@code "(x, y)"} — for example
-   * {@code "(3, 4)"}.
-   *
-   * @return the string form of this point
-   */
-  @Override
-  public String toString() {
-    // TODO
-    return "";
-  }
+    /**
+     * Returns this point formatted as {@code "(x, y)"} — for example
+     * {@code "(3, 4)"}.
+     *
+     * @return the string form of this point
+     */
+    @Override
+    public String toString() {
+        return "(%d, %d)".formatted(this.x, this.y);
+    }
 
-  /**
-   * Returns whether {@code o} is a Point with the same x and y as this one.
-   *
-   * @param o the object to compare with
-   * @return true iff o is a Point with equal coordinates
-   */
-  @Override
-  public boolean equals(Object o) {
-    // TODO: check that o is a Point (use `instanceof`), cast it, and compare
-    //       the x and y fields.
-    return false;
-  }
+    /**
+     * Returns whether {@code o} is a Point with the same x and y as this one.
+     *
+     * @param o the object to compare with
+     * @return true iff o is a Point with equal coordinates
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Point)) {
+            return false;
+        }
 
-  /**
-   * Returns a hash code consistent with {@link #equals(Object)} — equal points
-   * must return the same value.
-   *
-   * @return a hash code derived from x and y
-   */
-  @Override
-  public int hashCode() {
-    // TODO: Objects.hash(x, y) is an easy way to combine the fields.
-    return 0;
-  }
+        Point obj = (Point) o;
+
+        return this.x == obj.getX() && this.y == obj.getY();
+    }
+
+    /**
+     * Returns a hash code consistent with {@link #equals(Object)} — equal points
+     * must return the same value.
+     *
+     * @return a hash code derived from x and y
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.x, this.y);
+    }
 }
